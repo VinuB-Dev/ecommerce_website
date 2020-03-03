@@ -57,9 +57,19 @@ def logout(request):
         messages.success(request, 'You are now logged out')
         return redirect('index')
 
+def pay(request):
+    return render(request, 'accounts/pay.html')
+
+def Thank(request):
+    return render(request, 'accounts/Thank.html')    
+
+def track(request):
+    if request.method == 'GET':
+        return render(request, 'accounts/track.html') 
 
 def dashboard(request):
     user_orders = Order.objects.all().filter(user_id=request.user.id)
+    
 
     context ={
         'orders': user_orders

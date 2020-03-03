@@ -1,4 +1,34 @@
-<a href="javascript:{document.getElementById('logout').submit()}"
-                  class="nav-link">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                  </a> 
+from django.db import models
+from datetime import datetime
+from products.models import Product
+
+class Order(models.Model):
+    product = models.CharField(max_length=100)
+    product_id = models.IntegerField()
+    name = models.CharField(max_length=200)
+    quantity = models.IntegerField()
+    price = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    total_price = models.IntegerField()
+    user_id = models.IntegerField()
+    def __str__(self):
+        return self.name
+
+
+
+from django.contrib import admin
+
+from .models import Order
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product','quantity')
+    list_display_links =('id', 'product')
+    search_fields =('product','')
+    list_per_page = 25
+
+admin.site.register(Order, OrderAdmin)
+
+
+abstract factory
+intent --> problem
+solution with structure
+advantages and disadvantages

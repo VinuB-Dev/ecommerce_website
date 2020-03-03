@@ -45,7 +45,6 @@
                 <tr>
                     <th scope="col">Product</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -54,18 +53,21 @@
                     <tr>
                         <td>{{ order.product }}</td>
                         <td>{{ order.quantity }}</td>
-                        <td>{{ order.price }}</td>
                         <td>
                         <a class="btn btn-light" href="{%url 'product' order.product_id %}">View Product</a>
                         </td>
                     </tr>
                 {% endfor %}
-    
+               
                 </tbody>
             </table>
           {% else %}
             <p> No products in shopping cart</p>
           {% endif %}
+           <a class="nav-link" href="{% url 'pay'%}">
+                    <i class="fas fa-sign-in-alt"></i>
+      
+                    Order</a>
         </div>
       </div>
     </div>

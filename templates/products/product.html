@@ -28,6 +28,7 @@
           </li>
           <li class="breadcrumb-item active">{{ product.title }}</li>
         </ol>
+        <h5> rating:4.5/5 </h5>
       </nav>
     </div>
   </section>
@@ -106,7 +107,10 @@
             {% endif %}
             <input type="hidden" name="product_id" value="{{ product.seller.id }}">
             <input type="hidden" name="name" {% if user.is_authenticated %}
-            value="{{ user.first_name }}" {% endif %} required>
+            <input type="hidden" name="total_price" value="{{ product.seller.id }}">            
+            <input type="hidden" name="price" value="{{  seller.price }}">
+            <input type="hidden" name="id" value="{{  product.seller.id }}">
+            value="{{ user_first_name }}" {% endif %}>
             <div class="form-group">
               <label for="product_name" class="col-form-label">Product:</label>
               <input type="text" name="product" class="form-control" value="{{ product.title }}">
@@ -114,6 +118,7 @@
             <div class="form-group">
               <label for="quantity" class="col-form-label">Quantity:</label>
               <input type="quantity" name="quantity" class="form-control" required>
+              
             </div>
             <hr>
             <input type="submit" value="add to cart" class="btn btn-block btn-secondary" />
